@@ -1,74 +1,31 @@
 abstract class Room {
-    private String type;
-    private int beds;
-    private double price;
+    String type;
+    int beds;
+    double price;
 
-    public Room(String type, int beds, double price) {
-        this.type = type;
-        this.beds = beds;
-        this.price = price;
+    Room(String t, int b, double p) {
+        this.type = t;
+        this.beds = b;
+        this.price = p;
     }
-
-    public String getType() {
-        return type;
-    }
-
-    public int getBeds() {
-        return beds;
-    }
-
-    public double getPrice() {
-        return price;
-    }
-
-    public void displayInfo() {
-        System.out.println("Room Type: " + type + " | Beds: " + beds + " | Price: $" + price);
+    void show() {
+        System.out.println(type + " Room | " + beds + " Bed(s) | $" + price);
     }
 }
-
-class SingleRoom extends Room {
-    public SingleRoom() {
-        super("Single", 1, 100.0);
-    }
-}
-
-class DoubleRoom extends Room {
-    public DoubleRoom() {
-        super("Double", 2, 180.0);
-    }
-}
-
-class SuiteRoom extends Room {
-    public SuiteRoom() {
-        super("Suite", 3, 350.0);
-    }
-}
-
-public class Main {
-
+class Sgl extends Room { Sgl() { super("Single", 1, 100.0); } }
+class Dbl extends Room { Dbl() { super("Double", 2, 180.0); } }
+class Ste extends Room { Ste() { super("Suite", 3, 350.0); } }
+public class UseCase2RoomInitialization {
     public static void main(String[] args) {
-        System.out.println("========================================");
-        System.out.println("   Book My Stay App - Version 2.0   ");
-        System.out.println("========================================\n");
-
-        Room single = new SingleRoom();
-        Room dual = new DoubleRoom();
-        Room suite = new SuiteRoom();
-
-        int singleAvailability = 5;
-        int doubleAvailability = 3;
-        int suiteAvailability = 2;
-
-        single.displayInfo();
-        System.out.println("Availability: " + singleAvailability + " rooms left.");
-        System.out.println("----------------------------------------");
-
-        dual.displayInfo();
-        System.out.println("Availability: " + doubleAvailability + " rooms left.");
-        System.out.println("----------------------------------------");
-
-        suite.displayInfo();
-        System.out.println("Availability: " + suiteAvailability + " rooms left.");
-        System.out.println("----------------------------------------");
+        System.out.println("--- Book My Stay v2.0 ---");
+        Room r1 = new Sgl();
+        Room r2 = new Dbl();
+        Room r3 = new Ste();
+        int q1 = 5, q2 = 3, q3 = 2;
+        r1.show(); System.out.println("Left: " + q1);
+        System.out.println("---");
+        r2.show(); System.out.println("Left: " + q2);
+        System.out.println("---");
+        r3.show(); System.out.println("Left: " + q3);
     }
 }
